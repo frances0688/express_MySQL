@@ -1,0 +1,28 @@
+{
+	"name": "express_mysql_exercises",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/frances0688/express_MySQL.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/frances0688/express_MySQL/issues"
+	},
+	"homepage": "https://github.com/frances0688/express_MySQL#readme",
+	"devDependencies": {
+		"nodemon": "^3.0.1"
+	},
+	"dependencies": {
+		"express": "^4.18.2",
+		"mysql2": "^3.6.2"
+	}
+}
