@@ -77,6 +77,15 @@ const ProductController = {
                 throw err;
             res.send(result);
         });
+    },
+
+    getByName(req, res) {
+        let sql = `SELECT * FROM products WHERE product_name = "${req.params.name}"`;
+        db.query(sql, (err, result) => {
+            if (err) 
+                throw err;
+            res.send(result);
+        });
     }
 };
 
