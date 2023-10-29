@@ -14,6 +14,20 @@ const ProductController = {
             console.log(result);
             res.send("Product added.");
         });
+    },
+
+    assignCategory(req, res) {
+        let categoryproduct = {
+            product_id: req.body.product_id,
+            category_id: req.body.category_id
+        };
+        let sql = "INSERT INTO categoriesProducts SET ?";
+        db.query(sql, categoryproduct, (err, result) => {
+            if (err) 
+                throw err;
+            console.log(result);
+            res.send("Category assigned.");
+        });
     }
 };
 

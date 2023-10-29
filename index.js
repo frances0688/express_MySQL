@@ -5,7 +5,7 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use("/products", require("./routes/products"));
-// app.use("/categories", require("./routes/categories"));
+app.use("/categories", require("./routes/categories"));
 
 app.get("/createdb", (req, res) => {
     let sql = "CREATE DATABASE expressDB";
@@ -13,7 +13,7 @@ app.get("/createdb", (req, res) => {
         if (err) 
             throw err;
         console.log(result);
-        res.send("Database created...");
+        res.send("Database created.");
     });
 });
 
@@ -24,7 +24,7 @@ app.get("/createproducttable", (req, res) => {
         if (err) 
             throw err;
         console.log(result);
-        res.send("Products table created...");
+        res.send("Products table created.");
     });
 });
 
@@ -35,7 +35,7 @@ app.get("/createcategoriestable", (req, res) => {
         if (err) 
             throw err;
         console.log(result);
-        res.send("Categories table created...");
+        res.send("Categories table created.");
     });
 });
 
@@ -47,7 +47,7 @@ app.get("/createcategoriesProductstable", (req, res) => {
         if (err) 
             throw err;
         console.log(result);
-        res.send("CategoriesProducts table created...");
+        res.send("CategoriesProducts table created.");
     });
 });
 
