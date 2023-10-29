@@ -10,4 +10,6 @@ router.get("/getByName/:name", ProductController.getByName);
 router.post("/create", ProductController.create);
 router.post("/assignCategory", ProductController.assignCategory);
 router.put("/update/:id", ProductController.update);
+router.delete("/deleteById/:id", ProductController.deleteById);
+
 module.exports = router;

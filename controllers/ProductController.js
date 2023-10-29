@@ -86,6 +86,19 @@ const ProductController = {
                 throw err;
             res.send(result);
         });
+    },
+
+    deleteById(req, res) {
+        try {
+            db.query(`DELETE FROM categoriesProducts WHERE product_id = ${req.params.id}`);
+            db.query(`DELETE FROM products WHERE id = ${req.params.id}`);
+            res.send("Product deleted.");
+        } catch (err) {
+            console.error(err);
+            res
+                .status(500)
+                .json({error: "Error deleting the product"});
+        }
     }
 };
 
