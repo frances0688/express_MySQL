@@ -32,6 +32,14 @@ const UserController = {
 		});
 	},
 
+	getById(req, res) {
+		let sql = `SELECT * FROM users WHERE id = ${req.params.id}`;
+		db.query(sql, (err, result) => {
+			if (err) throw err;
+			res.send(result);
+		});
+	},
+
 	getAllUsersOrders(req, res) {
 		let sql =
 			"SELECT users.username, orders.order_number FROM users INNER JOIN orders ON users" +
