@@ -68,6 +68,15 @@ const ProductController = {
                 throw err;
             res.send(result);
         });
+    },
+
+    orderDescId(req, res) {
+        let sql = "SELECT * FROM products ORDER BY id DESC";
+        db.query(sql, (err, result) => {
+            if (err) 
+                throw err;
+            res.send(result);
+        });
     }
 };
 
