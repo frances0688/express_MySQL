@@ -22,6 +22,15 @@ const CategoryController = {
                 throw err;
             res.send("Category updated.");
         });
+    },
+
+    getAll(req, res) {
+        let sql = "SELECT * FROM categories";
+        db.query(sql, (err, result) => {
+            if (err) 
+                throw err;
+            res.send(result);
+        });
     }
 };
 
