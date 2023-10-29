@@ -13,6 +13,16 @@ const UserController = {
 			res.send("User added.");
 		});
 	},
+
+	update(req, res) {
+		let updatedUser = req.body;
+		let sql = `UPDATE users SET ? WHERE id = ${req.params.id}`;
+		db.query(sql, updatedUser, (err, result) => {
+			if (err) throw err;
+			console.log(result);
+			res.send("User updated.");
+		});
+	},
 };
 
 module.exports = UserController;
