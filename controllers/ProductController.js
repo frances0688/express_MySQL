@@ -59,6 +59,15 @@ const ProductController = {
                 throw err;
             res.send(result);
         });
+    },
+
+    getById(req, res) {
+        let sql = `SELECT * FROM products WHERE id = ${req.params.id}`;
+        db.query(sql, (err, result) => {
+            if (err) 
+                throw err;
+            res.send(result);
+        });
     }
 };
 
