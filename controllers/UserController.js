@@ -23,6 +23,14 @@ const UserController = {
 			res.send("User updated.");
 		});
 	},
+
+	getAll(req, res) {
+		let sql = "SELECT * FROM users";
+		db.query(sql, (err, result) => {
+			if (err) throw err;
+			res.send(result);
+		});
+	},
 };
 
 module.exports = UserController;
