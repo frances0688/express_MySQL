@@ -12,6 +12,16 @@ const CategoryController = {
             console.log(result);
             res.send("Category added.");
         });
+    },
+
+    update(req, res) {
+        let newCategoryName = req.body.category_name;
+        let sql = `UPDATE categories SET category_name = '${newCategoryName}' WHERE id = ${req.params.id}`;
+        db.query(sql, (err, result) => {
+            if (err) 
+                throw err;
+            res.send("Category updated.");
+        });
     }
 };
 
