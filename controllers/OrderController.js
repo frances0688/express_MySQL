@@ -14,6 +14,14 @@ const OrderController = {
 			res.send("Order added.");
 		});
 	},
+
+	getAll(req, res) {
+		let sql = "SELECT * FROM orders";
+		db.query(sql, (err, result) => {
+			if (err) throw err;
+			res.send(result);
+		});
+	},
 };
 
 module.exports = OrderController;
