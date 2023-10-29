@@ -26,7 +26,18 @@ const ProductController = {
             if (err) 
                 throw err;
             console.log(result);
-            res.send("Category assigned.");
+            res.send("Category assigned to product.");
+        });
+    },
+
+    update(req, res) {
+        let updatedProduct = req.body;
+        let sql = `UPDATE products SET ? WHERE id = ${req.params.id}`;
+        db.query(sql, updatedProduct, (err, result) => {
+            if (err) 
+                throw err;
+            console.log(result);
+            res.send("Product updated.");
         });
     }
 };
