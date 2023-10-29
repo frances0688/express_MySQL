@@ -7,6 +7,7 @@ app.use(express.json());
 app.use("/products", require("./routes/products"));
 app.use("/categories", require("./routes/categories"));
 app.use("/users", require("./routes/users"));
+app.use("/orders", require("./routes/orders"));
 
 app.get("/createdb", (req, res) => {
 	let sql = "CREATE DATABASE expressDB";
@@ -64,24 +65,12 @@ app.get("/createUsersTable", (req, res) => {
 
 app.get("/createOrdersTable", (req, res) => {
 	let sql =
-		"CREATE TABLE orders(id INT AUTO_INCREMENT, order_number INT, created DATETIME, P" +
-		"RIMARY KEY(id))";
+		"CREATE TABLE orders(id INT AUTO_INCREMENT, order_number INT, created DATETIME, u" +
+		"ser_id INT, FOREIGN KEY(user_id) REFERENCES users(id), PRIMARY KEY(id))";
 	db.query(sql, (err, result) => {
 		if (err) throw err;
 		console.log(result);
 		res.send("Orders table created.");
-	});
-});
-
-app.get("/createUsersOrdersTable", (req, res) => {
-	let sql =
-		"CREATE TABLE usersOrders(id INT AUTO_INCREMENT, user_id INT, order_id INT, PRIMA" +
-		"RY KEY(id),FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(order_id) REFE" +
-		"RENCES orders(id))";
-	db.query(sql, (err, result) => {
-		if (err) throw err;
-		console.log(result);
-		res.send("UsersOrders table created.");
 	});
 });
 
