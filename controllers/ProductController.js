@@ -48,6 +48,17 @@ const ProductController = {
                 throw err;
             res.send(result);
         });
+    },
+
+    getAllCategoriesProducts(req, res) {
+        let sql = "SELECT product_name, category_name FROM categoriesProducts INNER JOIN categories" +
+                " ON categories.id = categoriesProducts.category_id INNER JOIN products ON produc" +
+                "ts.id = categoriesProducts.product_id;";
+        db.query(sql, (err, result) => {
+            if (err) 
+                throw err;
+            res.send(result);
+        });
     }
 };
 
