@@ -49,6 +49,23 @@ const UserController = {
 			res.send(result);
 		});
 	},
+
+	delete(req, res) {
+		try {
+			db.query(
+				`DELETE FROM orders WHERE user_id = ${req.params.id}`
+			);
+			db.query(
+				`DELETE FROM users WHERE id = ${req.params.id}`
+			);
+			res.send("User deleted.");
+		} catch (err) {
+			console.error(err);
+			res
+				.status(500)
+				.json({ error: "Error deleting user." });
+		}
+	},
 };
 
 module.exports = UserController;
