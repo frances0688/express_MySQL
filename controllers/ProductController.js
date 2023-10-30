@@ -11,7 +11,7 @@ const ProductController = {
 		db.query(sql, product, (err, result) => {
 			if (err) throw err;
 			console.log(result);
-			res.send("Product added.");
+			res.status(201).send("Product added.");
 		});
 	},
 
@@ -24,7 +24,7 @@ const ProductController = {
 		db.query(sql, categoryproduct, (err, result) => {
 			if (err) throw err;
 			console.log(result);
-			res.send("Category assigned to product.");
+			res.status(201).send("Category assigned to product.");
 		});
 	},
 
@@ -34,7 +34,7 @@ const ProductController = {
 		db.query(sql, updatedProduct, (err, result) => {
 			if (err) throw err;
 			console.log(result);
-			res.send("Product updated.");
+			res.status(200).send("Product updated.");
 		});
 	},
 
@@ -42,7 +42,7 @@ const ProductController = {
 		let sql = "SELECT * FROM products";
 		db.query(sql, (err, result) => {
 			if (err) throw err;
-			res.send(result);
+			res.status(200).send(result);
 		});
 	},
 
@@ -53,7 +53,7 @@ const ProductController = {
 			"ts.id = categoriesProducts.product_id;";
 		db.query(sql, (err, result) => {
 			if (err) throw err;
-			res.send(result);
+			res.status(200).send(result);
 		});
 	},
 
@@ -61,7 +61,7 @@ const ProductController = {
 		let sql = `SELECT * FROM products WHERE id = ${req.params.id}`;
 		db.query(sql, (err, result) => {
 			if (err) throw err;
-			res.send(result);
+			res.status(200).send(result);
 		});
 	},
 
@@ -69,7 +69,7 @@ const ProductController = {
 		let sql = "SELECT * FROM products ORDER BY id DESC";
 		db.query(sql, (err, result) => {
 			if (err) throw err;
-			res.send(result);
+			res.status(200).send(result);
 		});
 	},
 
@@ -77,7 +77,7 @@ const ProductController = {
 		let sql = `SELECT * FROM products WHERE product_name = "${req.params.name}"`;
 		db.query(sql, (err, result) => {
 			if (err) throw err;
-			res.send(result);
+			res.status(200).send(result);
 		});
 	},
 
@@ -89,7 +89,7 @@ const ProductController = {
 			db.query(
 				`DELETE FROM products WHERE id = ${req.params.id}`
 			);
-			res.send("Product deleted.");
+			res.status(200).send("Product deleted.");
 		} catch (err) {
 			console.error(err);
 			res

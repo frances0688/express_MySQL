@@ -11,7 +11,7 @@ const OrderController = {
 		db.query(sql, order, (err, result) => {
 			if (err) throw err;
 			console.log(result);
-			res.send("Order added.");
+			res.status(201).send("Order added.");
 		});
 	},
 
@@ -19,7 +19,7 @@ const OrderController = {
 		let sql = "SELECT * FROM orders";
 		db.query(sql, (err, result) => {
 			if (err) throw err;
-			res.send(result);
+			res.status(200).send(result);
 		});
 	},
 };

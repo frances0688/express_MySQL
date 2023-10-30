@@ -10,7 +10,7 @@ const UserController = {
 		db.query(sql, user, (err, result) => {
 			if (err) throw err;
 			console.log(result);
-			res.send("User added.");
+			res.status(201).send("User added.");
 		});
 	},
 
@@ -20,7 +20,7 @@ const UserController = {
 		db.query(sql, updatedUser, (err, result) => {
 			if (err) throw err;
 			console.log(result);
-			res.send("User updated.");
+			res.status(200).send("User updated.");
 		});
 	},
 
@@ -28,7 +28,7 @@ const UserController = {
 		let sql = "SELECT * FROM users";
 		db.query(sql, (err, result) => {
 			if (err) throw err;
-			res.send(result);
+			res.status(200).send(result);
 		});
 	},
 
@@ -36,7 +36,7 @@ const UserController = {
 		let sql = `SELECT * FROM users WHERE id = ${req.params.id}`;
 		db.query(sql, (err, result) => {
 			if (err) throw err;
-			res.send(result);
+			res.status(200).send(result);
 		});
 	},
 
@@ -46,7 +46,7 @@ const UserController = {
 			".id = orders.user_id;";
 		db.query(sql, (err, result) => {
 			if (err) throw err;
-			res.send(result);
+			res.status(200).send(result);
 		});
 	},
 
@@ -58,7 +58,7 @@ const UserController = {
 			db.query(
 				`DELETE FROM users WHERE id = ${req.params.id}`
 			);
-			res.send("User deleted.");
+			res.status(200).send("User deleted.");
 		} catch (err) {
 			console.error(err);
 			res
